@@ -9,8 +9,10 @@
                 <p class="text-medium-emphasis">Sign In to your account</p>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <div class="input-group mb-3"><span class="input-group-text cil-user">
-                        </span>
+                    <div class="input-group mb-3"><span class="input-group-text">
+                            <svg class="icon">
+                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                            </svg></span>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" autofocus placeholder="Email Addrees">
                         @error('email')

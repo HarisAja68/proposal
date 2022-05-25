@@ -51,7 +51,7 @@
                 </div>
                 <button class="btn btn-block btn-success" type="submit">Create Account</button>
             </form>
-            <a href="{{ route('login') }}" class="btn btn-block btn-primary" type="submit">Back</a>
+            <a href="{{ route('login') }}" class="btn btn-block btn-primary mt-2" type="submit">Back</a>
         </div>
     </div>
 </div>
