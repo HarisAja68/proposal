@@ -1,61 +1,69 @@
 @extends('auth.master')
 
 @section('content')
-<div class="col-lg-8">
-    <div class="card-group d-block d-md-flex row">
-        <div class="card col-md-7 p-4 mb-0">
-            <div class="card-body">
-                <h1>Login</h1>
-                <p class="text-medium-emphasis">Sign In to your account</p>
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="input-group mb-3"><span class="input-group-text">
-                            <svg class="icon">
-                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                            </svg></span>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" autofocus placeholder="Email Addrees">
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="input-group mb-4"><span class="input-group-text">
-                            <svg class="icon">
-                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                            </svg></span>
-                        <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required
-                            placeholder="Password">
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <button class="btn btn-primary px-4" type="submit">Login</button>
+<div class="login-box">
+    <!-- /.login-logo -->
+    <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+            <a href="{{asset('template')}}/index2.html" class="h1"><b>Admin</b>LTE</a>
+        </div>
+        <div class="card-body">
+            <p class="login-box-msg">Login untuk masuk</p>
+            <form action="{{ route('login') }}" method="post">
+                @csrf
+                <div class="input-group mb-3">
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                        value="{{ old('email') }}" placeholder="Email" autofocus>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
                         </div>
-                </form>
-                <div class="col-6 text-end">
-                    <button class="btn btn-link px-0" type="button">Forgot password?</button>
+                    </div>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
-            </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                        placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">
+                                Remember Me
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+            <p class="mb-1">
+                <a href="forgot-password.html">I forgot my password</a>
+            </p>
+            <p class="mb-0">
+                <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+            </p>
         </div>
+        <!-- /.card-body -->
     </div>
-    <div class="card col-md-5 text-white bg-primary py-5">
-        <div class="card-body text-center">
-            <div>
-                <h2>Sign up</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.</p>
-                <a href="{{ route('register') }}" class="btn btn-lg btn-outline-light mt-3" type="button">Register
-                    Now!</a>
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- /.card -->
 </div>
 @endsection

@@ -1,57 +1,73 @@
 @extends('auth.master')
 
 @section('content')
-<div class="col-md-6">
-    <div class="card mb-4 mx-4">
-        <div class="card-body p-4">
-            <h1>Register</h1>
-            <p class="text-medium-emphasis">Create your account</p>
+<div class="login-box">
+    <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+            <a href="{{asset('template')}}/index2.html" class="h1"><b>Admin</b>LTE</a>
+        </div>
+        <div class="card-body">
+            <p class="login-box-msg">Register user baru</p>
+
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <div class="input-group mb-3"><span class="input-group-text">
-                        <svg class="icon">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                        </svg></span>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Username" name="name" value="{{ old('name') }}" autofocus>
+                <div class="input-group mb-3">
+                    <input type="text" name="name" value="{{ old('name')}}"
+                        class="form-control @error('name') is-invalid @enderror" placeholder="Username" autofocus>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
-                <div class="input-group mb-3"><span class="input-group-text">
-                        <svg class="icon">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
-                        </svg></span>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ old('email') }}" placeholder="Email Addrees" >
-
+                <div class="input-group mb-3">
+                    <input type="email" name="email" value="{{ old('email')}}"
+                        class="form-control @error('email') is-invalid @enderror" placeholder="Email">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
-                <div class="input-group mb-3"><span class="input-group-text">
-                        <svg class="icon">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                        </svg></span>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
+                <div class="input-group mb-3">
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                        placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
-                <div class="input-group mb-4"><span class="input-group-text">
-                        <svg class="icon">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                        </svg></span>
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Repeat Password">
+                <div class="input-group mb-3">
+                    <input type="password" name="password_confirmation" class="form-control"
+                        @error('password_confirmation') is-invalid @enderror placeholder="Ulangi Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
                 </div>
-                <button class="btn btn-block btn-success" type="submit">Create Account</button>
+                <div class="social-auth-links text-center mt-2 mb-3">
+                    <button type="submit" class="btn btn-danger btn-block">Register</button>
+                </div>
             </form>
-            <a href="{{ route('login') }}" class="btn btn-block btn-primary mt-2" type="submit">Back</a>
+
+            <a href="{{ route('login') }}" class="text-center">Sudah punya akun, Login</a>
         </div>
     </div>
 </div>
